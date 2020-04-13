@@ -10,12 +10,20 @@ class Pangram {
         val vowels2 = setOf<String>("Q","W","R","T","P","S","D","F","G","H",
             "J","K","L","Z","X","C","V","B","N","M")
         println(vowels)
+        var strsresult: List<String>
         var inp = mutableListOf<String>()
         var inp2 = arrayListOf<String>()
         println(inp)
         var strs = (inputString.split(" ").toTypedArray())
+
+        if(strs[0] == "") {
+            strsresult = strs.drop(1)
+            println("Проверка ${strsresult[0]}")
+        } else {
+            strsresult = strs.toList()
+        }
         println("str ${strs[0]}")
-        var strs2 = strs.toMutableList()
+        var strs2 = strsresult.toMutableList()
         println(strs2)
         var iny = 0
         var count = 0
@@ -32,7 +40,7 @@ class Pangram {
         if (inp.toSet() == vowels10) {
             //pangram
             println("подсчёт количества гласных в каждом слове")
-            while (iny < strs.size) {
+            while (iny < strsresult.size) {
                 for (i in strs2[iny]) {
                     for (a in vowels) {
                         if (i.toString() == a) {
@@ -79,7 +87,7 @@ class Pangram {
         }
         else {
             println("подсчёт количества согласных в слове")
-            while (iny < strs.size) {
+            while (iny < strsresult.size) {
                 for (i in strs2[iny]) {
                     for (a in vowels2) {
                         if (i.toString().toUpperCase() == a) {
@@ -136,19 +144,6 @@ class Pangram {
             println(result5)
             return result5
         }
-//        var inp3 = mutableListOf<String>()
-//        println("Переделка текста")
-//        for(i in inp2) {
-//            for (a in vowels) {
-//                when (i) {
-//                    a -> inp3.add(i.toUpperCase())
-//                    else -> {
-//                        inp3.add(i.toLowerCase())
-//                    }
-//                }
-//            }
-//        }
-//        println(inp3)
         throw NotImplementedError("Not implemented")
     }
 }
